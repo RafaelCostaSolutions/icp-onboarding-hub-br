@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "canisters": {
+    "frontend": {
+      "type": "assets",
+      "source": [
+        "src/",
+        "index.html",
+        "style.css",
+        "script.js",
+        "assets/"
+      ]
+    }
+  }
+}
