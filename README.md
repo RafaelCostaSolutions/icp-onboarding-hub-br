@@ -10,6 +10,14 @@ Many talented developers in Brazil lack access to localized content and support 
 
 To build a strong local presence for ICP through onboarding activities, educational content, and strategic communication.
 
+## 📚 Project Structure
+
+- `index.html` – Home Page
+- `style.css` – Basic Styles
+- `script.js` – Initial Script
+- `dfx.json` – PKI Structure Configuration
+- `src/` and `assets/` – Required Folders for Minimum Structure
+
 ## 📋 Plan
 
 - Social media campaigns explaining ICP in Portuguese
