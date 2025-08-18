@@ -13,6 +13,8 @@ To build a strong local presence for ICP through onboarding activities, educatio
 ## 📚 Project Structure
 
 - `index.html` – Home Page
+- `documentacao`- Documents
+- `Tutoriais`- Tutorials
 - `style.css` – Basic Styles
 - `script.js` – Initial Script
 - `dfx.json` – PKI Structure Configuration
