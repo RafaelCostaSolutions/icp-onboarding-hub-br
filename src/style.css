@@ -1,6 +1,269 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 40px;
-  background-color: #f9f9f9;
-  color: #333;
+/* Importa fonte moderna */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* Paleta de cores ICP */
+:root {
+  --color-primary: #ff6f3c; /* Laranja */
+  --color-secondary: #5a00ff; /* Roxo */
+  --color-accent: #00c2ff; /* Azul */
+  --color-bg: #f9f9f9;
+  --color-text: #222;
 }
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* Header */
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.menu a:hover {
+  color: var(--color-primary);
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: white;
+  border-radius: 0 0 40px 40px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+.hero .btn {
+  background: var(--color-accent);
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Botões */
+.btn, .btn-copiar {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+.btn:hover, .btn-copiar:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+.card img {
+  width: 60px;
+  height: auto; /* mantém proporção */
+  margin-bottom: 1rem;
+}
+
+
+/* Acordeão */
+.acordeao {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.acordeao-titulo {
+  background: var(--color-primary);
+  color: white;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.acordeao-titulo:hover {
+  background: var(--color-secondary);
+}
+.acordeao-conteudo {
+  display: none;
+  padding: 1rem;
+  background: #fff;
+}
+
+/* Documentação */
+.cards-docs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.card-doc {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+.card-doc:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Playground */
+.playground {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  margin: 3rem auto;
+  max-width: 700px;
+  text-align: center;
+}
+
+/* Comunidade */
+.comunidade {
+  padding: 3rem 1rem;
+  text-align: center;
+  background: linear-gradient(135deg, #fff, #f0f0ff);
+  border-top: 1px solid #eee;
+}
+.comunidade h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.links-comunidade {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Footer */
+footer {
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+  .hero h1 {
+    font-size: 3rem;
+  }
+  .hero p {
+    font-size: 1.3rem;
+  }
+}
+.btn-comunidade,
+.botao-principal {
+  margin-top: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.btn-comunidade:hover,
+.botao-principal:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+/* Centralizar botão fixo "Começar Agora no ICP" */
+/* Botão CTA em bloco normal, centralizado */
+.cta-fixed {
+  margin: 3rem auto;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
