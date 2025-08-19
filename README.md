@@ -76,7 +76,7 @@ Construir uma presença local forte para o ICP por meio de:
 ---
 
 🗺️ Roadmap – Ações como Embaixador do ICP (Brasil)
-1. Onboarding & Educação
+* Onboarding & Educação
 
 Criar vídeos curtos explicando o que é o ICP (em português).
 
@@ -84,7 +84,7 @@ Publicar uma série educacional no LinkedIn e no Instagram.
 
 Produzir um guia rápido para iniciantes: “Primeiros Passos com ICP” (em PDF ou Notion).
 
-2. Engajamento Comunitário
+* Engajamento Comunitário
 
 Conectar o projeto com grupos universitários locais (IEEE, centros acadêmicos, etc.).
 
@@ -92,7 +92,7 @@ Organizar sessões online ou palestras introdutórias (ao vivo ou via Discord).
 
 Manter presença ativa nos canais do ICP e compartilhar atualizações com a comunidade brasileira.
 
-3. Conteúdo Técnico & Missões
+* Conteúdo Técnico & Missões
 
 Escrever tutoriais acessíveis para iniciantes (em Markdown ou vídeo) mostrando como usar o ICP.
 
@@ -100,7 +100,7 @@ Compartilhar casos de uso locais e oportunidades Web3 no Brasil.
 
 Traduzir documentos técnicos essenciais para o português, ampliando o acesso.
 
-4. Expansão & Networking
+* Expansão & Networking
 
 Convidar outros desenvolvedores e criadores brasileiros para explorar o ecossistema ICP.
 
