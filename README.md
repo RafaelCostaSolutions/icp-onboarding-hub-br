@@ -122,12 +122,6 @@ Ajudar a estruturar hubs regionais de embaixadores (ex.: Nordeste, Centro-Oeste,
  O objetivo é tornar o ICP mais acessível, visível e ativo no Brasil — especialmente para estudantes, desenvolvedores iniciantes e criadores de conteúdo Web3.
 
 ---
-Sobre a Equipe
-Este projeto foi desenvolvido inicialmente de forma solo, como um MVP (Minimum Viable Product) para demonstrar a viabilidade de um hub de onboarding no ICP voltado para o público brasileiro.
-
-Apesar de ser conduzido por apenas um desenvolvedor nesta fase, o projeto foi estruturado para ser colaborativo e escalável. A proposta é que, a partir deste MVP, outros desenvolvedores, estudantes e criadores possam contribuir, expandindo funcionalidades, conteúdos e alcance da iniciativa.
-
-O objetivo não é apenas provar a ideia, mas também mostrar que mesmo uma pessoa sozinha já consegue entregar valor real à comunidade e que com apoio de mais participantes o impacto pode ser muito maior.
 
 ##  Licença
 
