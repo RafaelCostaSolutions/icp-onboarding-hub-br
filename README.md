@@ -1,18 +1,18 @@
 
-# 🚀 ICP Onboarding Hub BR
+#  ICP Onboarding Hub BR
 
 Uma iniciativa voltada para **onboarding de desenvolvedores e criadores brasileiros** no ecossistema **Internet Computer (ICP)**.
 
 ---
 
-## 🔍 Problema
+##  Problema
 
 Muitos desenvolvedores no Brasil têm talento, mas não encontram **conteúdo acessível e suporte local** para entrar no universo Web3.
 Este projeto resolve isso oferecendo **tutoriais, materiais educativos e integração com a comunidade ICP**, tudo em português.
 
 ---
 
-## 🎯 Objetivo
+## Objetivo
 
 Construir uma presença local forte para o ICP por meio de:
 
@@ -22,7 +22,7 @@ Construir uma presença local forte para o ICP por meio de:
 
 ---
 
-## 🛠️ Como rodar o projeto (Local)
+##  Como rodar o projeto (Local)
 
 1. **Instalar o DFX (ICP SDK)**
 
@@ -54,7 +54,7 @@ Construir uma presença local forte para o ICP por meio de:
 
 ---
 
-## 📚 Estrutura do Projeto
+##  Estrutura do Projeto
 
 * `index.html` – Página inicial
 * `tutoriais.html` – Tutoriais passo a passo (ICP Quickstart)
@@ -66,16 +66,16 @@ Construir uma presença local forte para o ICP por meio de:
 
 ---
 
-## 🎬 Entregáveis (Hackathon)
+##  Entregáveis (Hackathon)
 
-* ✅ Repositório público no GitHub com `dfx.json`
-* ✅ Site funcional com tutoriais e links da comunidade
-* 🎥 **Vídeo Demo** – walkthrough do site e código
-* 🎥 **Pitch Video** – problema, solução, roadmap e impacto
+*  Repositório público no GitHub com `dfx.json`
+*  Site funcional com tutoriais e links da comunidade
+*  **Vídeo Demo** – walkthrough do site e código
+*  **Pitch Video** – problema, solução, roadmap e impacto
 
 ---
 
-🗺️ Roadmap – Ações como Embaixador do ICP (Brasil)
+ Roadmap – Ações como Embaixador do ICP (Brasil)
 * Onboarding & Educação
 
 Criar vídeos curtos explicando o que é o ICP (em português).
@@ -110,7 +110,7 @@ Ajudar a estruturar hubs regionais de embaixadores (ex.: Nordeste, Centro-Oeste,
 
 ---
 
-## 👥 Impacto Comunitário
+##  Impacto Comunitário
 
 * Criação de vídeos curtos explicando ICP em português.
 * Publicação de tutoriais acessíveis para iniciantes.
@@ -119,11 +119,17 @@ Ajudar a estruturar hubs regionais de embaixadores (ex.: Nordeste, Centro-Oeste,
 
 ---
 
-🎯 O objetivo é tornar o ICP mais acessível, visível e ativo no Brasil — especialmente para estudantes, desenvolvedores iniciantes e criadores de conteúdo Web3.
+ O objetivo é tornar o ICP mais acessível, visível e ativo no Brasil — especialmente para estudantes, desenvolvedores iniciantes e criadores de conteúdo Web3.
 
 ---
+Sobre a Equipe
+Este projeto foi desenvolvido inicialmente de forma solo, como um MVP (Minimum Viable Product) para demonstrar a viabilidade de um hub de onboarding no ICP voltado para o público brasileiro.
 
-## 📌 Licença
+Apesar de ser conduzido por apenas um desenvolvedor nesta fase, o projeto foi estruturado para ser colaborativo e escalável. A proposta é que, a partir deste MVP, outros desenvolvedores, estudantes e criadores possam contribuir, expandindo funcionalidades, conteúdos e alcance da iniciativa.
+
+O objetivo não é apenas provar a ideia, mas também mostrar que mesmo uma pessoa sozinha já consegue entregar valor real à comunidade — e que com apoio de mais participantes o impacto pode ser muito maior.
+---
+##  Licença
 
 MIT License – uso e adaptação livres.
 
