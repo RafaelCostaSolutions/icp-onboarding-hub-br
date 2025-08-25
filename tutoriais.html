@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tutoriais Passo a Passo — ICP Hub BR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">
+      <img src="assets/logo.png" alt="Logo ICP" style="height:40px; vertical-align:middle; margin-right:8px;">
+     ICP Onboarding Hub BR
+</a>
+
+      <nav>
+        <ul class="menu">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="documentacao.html">Documentação</a></li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Tutoriais Passo a Passo</h1>
+    <p class="lead">Aprenda desde o básico até publicar seu primeiro dapp no ICP.</p>
+
+    <nav class="subnav">
+      <a href="#primeiros-passos">Etapa 1</a>
+      <a href="#criar-projeto">Etapa 2</a>
+      <a href="#publicar-icp">Etapa 3</a>
+    </nav>
+
+    <!-- ETAPA 1 -->
+    <section id="primeiros-passos" class="step">
+      <h2>Etapa 1: Instalar DFX</h2>
+      <p>Instale a CLI oficial do ICP (DFX) no seu computador.</p>
+
+      <h3>macOS / Linux</h3>
+      <pre class="code"><code>sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"</code></pre>
+      <button class="btn-copiar" data-comando='sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"'>Copiar comando</button>
+
+      <h3>Verificar instalação</h3>
+      <pre class="code"><code>dfx --version</code></pre>
+      <button class="btn-copiar" data-comando="dfx --version">Copiar comando</button>
+    </section>
+
+    <!-- ETAPA 2 -->
+    <section id="criar-projeto" class="step">
+      <h2>Etapa 2: Criar um novo projeto</h2>
+      <p>Gere um template de app para começar a desenvolver.</p>
+
+      <pre class="code"><code>dfx new meu_projeto</code></pre>
+      <button class="btn-copiar" data-comando="dfx new meu_projeto">Copiar comando</button>
+
+      <h3>Entrar na pasta e iniciar rede local</h3>
+      <pre class="code"><code>cd meu_projeto
+dfx start --clean --background</code></pre>
+      <button class="btn-copiar" data-comando="cd meu_projeto\ndfx start --clean --background">Copiar comandos</button>
+    </section>
+
+    <!-- ETAPA 3 -->
+    <section id="publicar-icp" class="step">
+      <h2>Etapa 3: Publicar no ICP</h2>
+      <p>Faça deploy dos canisters (backend e/ou assets).</p>
+
+      <pre class="code"><code>dfx deploy</code></pre>
+      <button class="btn-copiar" data-comando="dfx deploy">Copiar comando</button>
+
+      <h3>Abrir no navegador (assets)</h3>
+      <pre class="code"><code>dfx canister call internet_identity init '()'   # (exemplo de chamada; opcional)
+# Para ver URL do frontend (assets):
+dfx canister id __Candid_UI
+# ou confira o output do deploy para a URL do canister de assets</code></pre>
+      <button class="btn-copiar" data-comando="dfx canister id __Candid_UI">Copiar comando</button>
+    </section>
+
+    
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© ICP Onboarding Hub BR</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
