@@ -128,3 +128,21 @@ Ajudar a estruturar hubs regionais de embaixadores (ex.: Nordeste, Centro-Oeste,
 MIT License – uso e adaptação livres.
 
 ---
+
+## 🚀 Deploy Local Realizado com Sucesso
+
+### ✅ Comprovante de Funcionamento:
+- **Canister ID Local:** `uxrrr-q7777-77774-qaaaq-cai`
+- **URL Local:** http://uxrrr-q7777-77774-qaaaq-cai.localhost:4943/
+- **Comando Executado:** `dfx deploy`
+
+### 📋 Como Executar Localmente:
+```bash
+# Iniciar blockchain local
+dfx start
+
+# Fazer deploy dos canisters
+dfx deploy
+
+# Acessar frontend
+open http://uxrrr-q7777-77774-qaaaq-cai.localhost:4943/
