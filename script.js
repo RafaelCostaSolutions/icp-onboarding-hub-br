@@ -1,55 +1,60 @@
-console.log("🚀 ICP Onboarding Hub BR carregado!");
-
-// Acordeão funcional
-document.querySelectorAll(".acordeao-titulo").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const conteudo = btn.nextElementSibling;
-    conteudo.style.display = conteudo.style.display === "block" ? "none" : "block";
-  });
-});
-
-// Botões de copiar comando
-document.querySelectorAll(".btn-copiar").forEach(botao => {
-  botao.addEventListener("click", () => {
-    const comando = botao.getAttribute("data-comando");
-    navigator.clipboard.writeText(comando)
-      .then(() => alert("✅ Comando copiado:\n" + comando))
-      .catch(err => console.error("Erro ao copiar: ", err));
-  });
-});
+// script.js
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("🚀 ICP Onboarding Hub BR carregado!");
+  // ===== Header Scroll Effect =====
+  const header = document.querySelector("header");
+  if (header) {
+    window.addEventListener("scroll", () => {
+      header.classList.toggle("scrolled", window.scrollY > 50);
+    });
+  }
 
-  // Botões de copiar comando
-  document.querySelectorAll(".btn-copiar").forEach(botao => {
-    botao.addEventListener("click", () => {
-      const comando = botao.getAttribute("data-comando");
-      if (!comando) {
-        alert("⚠ Nenhum comando encontrado para copiar!");
-        return;
+  // ===== Mobile Menu Toggle =====
+  const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+  const navMenu = document.getElementById("navMenu");
+
+  if (mobileMenuBtn && navMenu) {
+    mobileMenuBtn.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+    });
+
+    // Fecha menu ao clicar nos links
+    navMenu.querySelectorAll("a, button").forEach(link => {
+      link.addEventListener("click", () => navMenu.classList.remove("active"));
+    });
+  }
+
+  // ===== Scroll Suave para Seções =====
+  document.querySelectorAll("a[href^='#'], button[data-scroll]").forEach(el => {
+    el.addEventListener("click", e => {
+      e.preventDefault();
+      const id = el.getAttribute("href")?.slice(1) || el.dataset.scroll;
+      const target = document.getElementById(id);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
       }
-      navigator.clipboard.writeText(comando)
-        .then(() => alert("✅ Comando copiado:\n" + comando))
-        .catch(err => console.error("Erro ao copiar: ", err));
     });
   });
-});
-// Playground funcional
-document.addEventListener("DOMContentLoaded", () => {
-  const entrada = document.getElementById("entrada-playground");
-  const botao = document.getElementById("executar-playground");
-  const saida = document.getElementById("saida-playground");
 
-  if (entrada && botao && saida) {
-    botao.addEventListener("click", () => {
-      const texto = entrada.value.trim();
-      if (texto === "") {
-        saida.innerHTML = "<em>Digite algo para testar...</em>";
-      } else {
-        // Aqui você pode customizar, por enquanto só ecoa a entrada
-        saida.innerHTML = " Simulação ICP: <strong>" + texto + "</strong>";
-      }
+  // ===== Pesquisa (documentacao.html) =====
+  const searchInput = document.querySelector(".search-input");
+  if (searchInput) {
+    searchInput.addEventListener("input", e => {
+      const query = e.target.value.toLowerCase();
+      document.querySelectorAll(".docs-card").forEach(card => {
+        const match = card.innerText.toLowerCase().includes(query);
+        card.style.display = match ? "block" : "none";
+      });
     });
+  }
+
+  // ===== Progress Bar Fake (documentacao.html) =====
+  const progressFill = document.querySelector(".progress-fill");
+  if (progressFill) {
+    let progress = 35;
+    setInterval(() => {
+      progress = (progress + 5) % 100;
+      progressFill.style.width = `${progress}%`;
+    }, 4000);
   }
 });
