@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursos - ICP Hub BR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3B82F6;
+            --primary-dark: #2563EB;
+            --secondary: #8B5CF6;
+            --accent: #06B6D4;
+            --light: #F8FAFC;
+            --dark: #0F172A;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1E293B;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+            --border-radius: 12px;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: var(--shadow-lg);
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            background: var(--dark);
+            color: white;
+            padding: 2rem 1.5rem;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo-icon {
+            background: var(--primary);
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-title {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--gray-300);
+            margin: 1.5rem 0 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-list {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            color: var(--gray-300);
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: var(--gray-800);
+            color: white;
+        }
+
+        .nav-link i {
+            margin-right: 0.75rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .resource-stats {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: var(--gray-800);
+            border-radius: var(--border-radius);
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+        }
+
+        .stat-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-value {
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 2rem 3rem;
+            overflow-y: auto;
+            max-height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray-600);
+            font-size: 0.875rem;
+        }
+
+        .breadcrumb a {
+            color: var(--gray-600);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            font-size: 0.875rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--gray-300);
+            color: var(--gray-700);
+            background: white;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .page-description {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+        }
+
+        /* Resources Tabs */
+        .resources-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--gray-200);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--gray-600);
+            border-bottom: 3px solid transparent;
+            transition: var(--transition);
+        }
+
+        .tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .tab:hover {
+            color: var(--primary);
+        }
+
+        .tab-badge {
+            background: var(--gray-200);
+            color: var(--gray-700);
+            padding: 0.15rem 0.5rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            margin-left: 0.5rem;
+        }
+
+        .tab.active .tab-badge {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Resources Grid */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--gray-200);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-header {
+            position: relative;
+            height: 160px;
+            overflow: hidden;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 1rem;
+            color: white;
+        }
+
+        .card-type {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: var(--primary);
+            color: white;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-description {
+            color: var(--gray-600);
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+            flex-grow: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--gray-200);
+            padding-top: 1rem;
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-actions {
+            margin-top: 1.5rem;
+        }
+
+        .card-link {
+            width: 100%;
+            text-align: center;
+            display: block;
+            padding: 0.75rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .card-link:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Official Docs Section */
+        .official-docs {
+            background: var(--gray-100);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .doc-item {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .doc-item:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-2px);
+        }
+
+        .doc-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.5rem;
+            background: var(--primary);
+            color: white;
+        }
+
+        .doc-text {
+            flex-grow: 1;
+        }
+
+        .doc-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .doc-desc {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+
+        /* Grants Section */
+        .grants-section {
+            margin-bottom: 3rem;
+        }
+
+        .grant-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+        }
+
+        .grant-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .grant-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .grant-desc {
+            color: var(--gray-600);
+            margin-bottom: 1.5rem;
+        }
+
+        .grant-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin-bottom: 0.25rem;
+        }
+
+        .detail-value {
+            font-weight: 600;
+        }
+
+        .grant-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Help Section */
+        .help-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: var(--border-radius);
+            color: white;
+        }
+
+        .help-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .help-text {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .help-cta {
+            background: white;
+            color: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        .help-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                height: auto;
+                position: relative;
+                padding: 1.5rem;
+            }
+            
+            .main-content {
+                padding: 1.5rem;
+            }
+            
+            .resources-grid, .docs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .user-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .resources-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .tab {
+                padding: 0.75rem 1rem;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .grant-header {
+                flex-direction: column;
+            }
+            
+            .grant-actions {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 1rem;
+            }
+            
+            .grant-actions .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">ICP</div>
+                <span>Hub BR</span>
+            </div>
+            
+            <h3 class="nav-title">Menu Principal</h3>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        Início
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-book"></i>
+                        Documentação
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-graduation-cap"></i>
+                        Tutoriais
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        Comunidade
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-code"></i>
+                        Playground
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link active">
+                        <i class="fas fa-folder-open"></i>
+                        Recursos
+                    </a>
+                </li>
+            </ul>
+            
+            <h3 class="nav-title">Categorias de Recursos</h3>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-file-alt"></i>
+                        Documentação
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-tools"></i>
+                        Ferramentas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-graduation-cap"></i>
+                        Aprendizado
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-money-bill-wave"></i>
+                        Financiamento
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-code-branch"></i>
+                        Exemplos
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="resource-stats">
+                <h3 class="nav-title">Estatísticas de Recursos</h3>
+                <div class="stat-item">
+                    <span>Documentos Disponíveis</span>
+                    <span class="stat-value">+120</span>
+                </div>
+                <div class="stat-item">
+                    <span>Ferramentas</span>
+                    <span class="stat-value">18</span>
+                </div>
+                <div class="stat-item">
+                    <span>Exemplos de Código</span>
+                    <span class="stat-value">+65</span>
+                </div>
+                <div class="stat-item">
+                    <span>Grants Ativos</span>
+                    <span class="stat-value">7</span>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="header">
+                <div class="breadcrumb">
+                    <a href="#">Home</a> <i class="fas fa-chevron-right"></i>
+                    <a href="#">Recursos</a> <i class="fas fa-chevron-right"></i>
+                    <span>Todos os Recursos</span>
+                </div>
+                
+                <div class="user-actions">
+                    <button class="btn btn-outline">
+                        <i class="fas fa-download"></i>
+                        Baixar Tudo
+                    </button>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Sugerir Recurso
+                    </button>
+                </div>
+            </div>
+            
+            <h1 class="page-title">Recursos ICP</h1>
+            <p class="page-description">
+                Acesse toda a documentação, ferramentas, exemplos e recursos necessários para desenvolver 
+                na Internet Computer. Tudo em português e organizado para acelerar seu aprendizado.
+            </p>
+            
+            <div class="resources-tabs">
+                <div class="tab active">
+                    <span>Todos</span>
+                    <span class="tab-badge">42</span>
+                </div>
+                <div class="tab">
+                    <span>Documentação</span>
+                    <span class="tab-badge">15</span>
+                </div>
+                <div class="tab">
+                    <span>Ferramentas</span>
+                    <span class="tab-badge">8</span>
+                </div>
+                <div class="tab">
+                    <span>Exemplos</span>
+                    <span class="tab-badge">12</span>
+                </div>
+                <div class="tab">
+                    <span>Grants</span>
+                    <span class="tab-badge">7</span>
+                </div>
+            </div>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="card-header">
+                        <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Documentação Oficial" class="card-image">
+                        <div class="card-overlay">
+                            <div class="card-time">
+                                <i class="fas fa-clock"></i> Atualizado em: Set/2023
+                            </div>
+                        </div>
+                        <span class="card-type">Documentação</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Documentação Oficial Traduzida</h3>
+                        <p class="card-description">
+                            Acesse a documentação completa do ICP traduzida para português, incluindo guias de instalação, referência de API e conceitos fundamentais.
+                        </p>
+                        <div class="card-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-file-alt"></i>
+                                120 páginas
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-download"></i>
+                                2.4k downloads
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <a href="#" class="card-link">
+                                <i class="fas fa-book-open"></i>
+                                Acessar Documentação
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="card-header">
+                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="SDK DFX" class="card-image">
+                        <div class="card-overlay">
+                            <div class="card-time">
+                                <i class="fas fa-clock"></i> Versão: 0.15.0
+                            </div>
+                        </div>
+                        <span class="card-type">Ferramenta</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">SDK DFX Completo</h3>
+                        <p class="card-description">
+                            Baixe a versão mais recente do SDK DFX para desenvolvimento local na Internet Computer. Inclui todas as ferramentas necessárias.
+                        </p>
+                        <div class="card-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-hdd"></i>
+                                285 MB
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-download"></i>
+                                8.7k downloads
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <a href="#" class="card-link">
+                                <i class="fas fa-download"></i>
+                                Baixar SDK
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="card-header">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Exemplos no GitHub" class="card-image">
+                        <div class="card-overlay">
+                            <div class="card-time">
+                                <i class="fas fa-star"></i> 245 stars
+                            </div>
+                        </div>
+                        <span class="card-type">Exemplos</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Repositório de Exemplos</h3>
+                        <p class="card-description">
+                            Acesse dezenas de exemplos práticos de código para ICP, desde canisters simples até aplicações completas com frontend.
+                        </p>
+                        <div class="card-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-code-branch"></i>
+                                65 exemplos
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-download"></i>
+                                5.2k clones
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <a href="#" class="card-link">
+                                <i class="fab fa-github"></i>
+                                Acessar GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="official-docs">
+                <div class="section-header">
+                    <h2 class="section-title">Documentação Oficial</h2>
+                    <a href="#" class="btn btn-outline">
+                        <i class="fas fa-book"></i>
+                        Ver Toda Documentação
+                    </a>
+                </div>
+                <div class="docs-grid">
+                    <div class="doc-item">
+                        <div class="doc-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="doc-text">
+                            <div class="doc-title">Guia de Instalação</div>
+                            <div class="doc-desc">Instale e configure o DFX em seu ambiente</div>
+                        </div>
+                    </div>
+                    
+                    <div class="doc-item">
+                        <div class="doc-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="doc-text">
+                            <div class="doc-title">Referência de Motoko</div>
+                            <div class="doc-desc">Guia completo da linguagem Motoko</div>
+                        </div>
+                    </div>
+                    
+                    <div class="doc-item">
+                        <div class="doc-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="doc-text">
+                            <div class="doc-title">Rust CDK</div>
+                            <div class="doc-desc">Desenvolvimento com Rust na ICP</div>
+                        </div>
+                    </div>
+                    
+                    <div class="doc-item">
+                        <div class="doc-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="doc-text">
+                            <div class="doc-title">Deploy na Mainnet</div>
+                            <div class="doc-desc">Publicando seu projeto na mainnet</div>
+                        </div>
+                    </div>
+                    
+                    <div class="doc-item">
+                        <div class="doc-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="doc-text">
+                            <div class="doc-title">Gerenciamento de Cycles</div>
+                            <div class="doc-desc">Como gerenciar recursos na ICP</div>
+                        </div>
+                    </div>
+                    
+                    <div class="doc-item">
+                        <div class="doc-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="doc-text">
+                            <div class="doc-title">Segurança</div>
+                            <div class="doc-desc">Melhores práticas de segurança</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grants-section">
+                <div class="section-header">
+                    <h2 class="section-title">Programas de Financiamento</h2>
+                    <a href="#" class="btn btn-outline">
+                        <i class="fas fa-money-bill-wave"></i>
+                        Ver Todos os Grants
+                    </a>
+                </div>
+                
+                <div class="grant-card">
+                    <div class="grant-header">
+                        <div>
+                            <h3 class="grant-title">DFINITY Grants</h3>
+                            <p class="grant-desc">
+                                Financiamento para projetos inovadores no ecossistema Internet Computer. 
+                                Receba suporte técnico e financeiro para desenvolver sua ideia.
+                            </p>
+                        </div>
+                        <div class="grant-badge" style="background: var(--success); color: white; padding: 0.5rem 1rem; border-radius: 100px; font-weight: 600;">
+                            Ativo
+                        </div>
+                    </div>
+                    
+                    <div class="grant-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Valor do Grant</span>
+                            <span class="detail-value">Até $25,000</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Prazo</span>
+                            <span class="detail-value">30 dias para aplicação</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Projetos Aprovados</span>
+                            <span class="detail-value">24</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Taxa de Sucesso</span>
+                            <span class="detail-value">35%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="grant-actions">
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-file-alt"></i>
+                            Aplicar Agora
+                        </a>
+                        <a href="#" class="btn btn-outline">
+                            <i class="fas fa-info-circle"></i>
+                            Ver Detalhes
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="grant-card">
+                    <div class="grant-header">
+                        <div>
+                            <h3 class="grant-title">Community Grants</h3>
+                            <p class="grant-desc">
+                                Financiamento para projetos comunitários e educacionais. Ideal para tutoriais, 
+                                traduções e ferramentas para a comunidade brasileira.
+                            </p>
+                        </div>
+                        <div class="grant-badge" style="background: var(--warning); color: white; padding: 0.5rem 1rem; border-radius: 100px; font-weight: 600;">
+                            Em Breve
+                        </div>
+                    </div>
+                    
+                    <div class="grant-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Valor do Grant</span>
+                            <span class="detail-value">Até $10,000</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Prazo</span>
+                            <span class="detail-value">A definir</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Foco</span>
+                            <span class="detail-value">Educação e Comunidade</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Idioma</span>
+                            <span class="detail-value">Português</span>
+                        </div>
+                    </div>
+                    
+                    <div class="grant-actions">
+                        <button class="btn btn-outline" disabled>
+                            <i class="fas fa-clock"></i>
+                            Em Breve
+                        </button>
+                        <a href="#" class="btn btn-outline">
+                            <i class="fas fa-bell"></i>
+                            Receber Notificação
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h2 class="help-title">Precisa de ajuda para encontrar recursos?</h2>
+                <p class="help-text">
+                    Nossa equipe está disponível para ajudar você a encontrar os recursos ideais para seu projeto
+                </p>
+                <a href="#" class="help-cta">
+                    <i class="fas fa-question-circle"></i>
+                    Pedir Ajuda
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Simulação de troca de abas
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Simular carregamento de conteúdo baseado na aba
+                const tabName = tab.querySelector('span').textContent;
+                document.querySelector('.page-title').textContent = `Recursos ${tabName}`;
+            });
+        });
+        
+        // Simulação de sistema de downloads
+        const downloadButtons = document.querySelectorAll('.card-link');
+        downloadButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const resourceName = this.closest('.resource-card').querySelector('.card-title').textContent;
+                alert(`Iniciando download de: ${resourceName}`);
+            });
+        });
+        
+        // Simulação de aplicação para grants
+        const applyButtons = document.querySelectorAll('.grant-actions .btn-primary');
+        applyButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (!this.hasAttribute('disabled')) {
+                    e.preventDefault();
+                    const grantName = this.closest('.grant-card').querySelector('.grant-title').textContent;
+                    alert(`Redirecionando para aplicação: ${grantName}`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+<script src="script.js"></script>

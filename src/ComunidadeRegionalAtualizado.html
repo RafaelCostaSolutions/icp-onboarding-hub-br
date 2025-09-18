@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidade - ICP Hub BR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3B82F6;
+            --primary-dark: #2563EB;
+            --secondary: #8B5CF6;
+            --accent: #06B6D4;
+            --light: #F8FAFC;
+            --dark: #0F172A;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1E293B;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+            --border-radius: 12px;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: var(--shadow-lg);
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            background: var(--dark);
+            color: white;
+            padding: 2rem 1.5rem;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo-icon {
+            background: var(--primary);
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-title {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--gray-300);
+            margin: 1.5rem 0 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-list {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            color: var(--gray-300);
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: var(--gray-800);
+            color: white;
+        }
+
+        .nav-link i {
+            margin-right: 0.75rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .community-stats {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: var(--gray-800);
+            border-radius: var(--border-radius);
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+        }
+
+        .stat-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-value {
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 2rem 3rem;
+            overflow-y: auto;
+            max-height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray-600);
+            font-size: 0.875rem;
+        }
+
+        .breadcrumb a {
+            color: var(--gray-600);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            font-size: 0.875rem;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--gray-300);
+            color: var(--gray-700);
+            background: white;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .page-description {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+        }
+
+        /* Community Tabs */
+        .community-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--gray-200);
+            margin-bottom: 2rem;
+        }
+
+        .tab {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--gray-600);
+            border-bottom: 3px solid transparent;
+            transition: var(--transition);
+        }
+
+        .tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .tab:hover {
+            color: var(--primary);
+        }
+
+        .tab-badge {
+            background: var(--gray-200);
+            color: var(--gray-700);
+            padding: 0.15rem 0.5rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            margin-left: 0.5rem;
+        }
+
+        .tab.active .tab-badge {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Community Grid */
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .community-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--gray-200);
+        }
+
+        .community-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-header {
+            position: relative;
+            height: 120px;
+            overflow: hidden;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 1rem;
+            color: white;
+        }
+
+        .card-icon {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .icon-discord {
+            background: #5865F2;
+            color: white;
+        }
+
+        .icon-telegram {
+            background: #26A5E4;
+            color: white;
+        }
+
+        .icon-forum {
+            background: var(--primary);
+            color: white;
+        }
+
+        .icon-twitter {
+            background: #1DA1F2;
+            color: white;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-description {
+            color: var(--gray-600);
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+        }
+
+        .card-stats {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--gray-200);
+            padding-top: 1rem;
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-actions {
+            margin-top: 1.5rem;
+        }
+
+        .card-link {
+            width: 100%;
+            text-align: center;
+            display: block;
+            padding: 0.75rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .card-link:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Events Section */
+        .events-section {
+            background: var(--gray-100);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .event-card:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-2px);
+        }
+
+        .event-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-description {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .event-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+
+        /* Community Spotlight */
+        .spotlight-section {
+            margin-bottom: 3rem;
+        }
+
+        .spotlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .member-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .member-card:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-2px);
+        }
+
+        .member-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--primary);
+        }
+
+        .member-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .member-role {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .member-projects {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-badge {
+            background: var(--gray-100);
+            color: var(--gray-700);
+            padding: 0.25rem 0.5rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+        }
+
+        .member-actions {
+            margin-top: 1rem;
+        }
+
+        .member-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .member-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Help Section */
+        .help-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: var(--border-radius);
+            color: white;
+        }
+
+        .help-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .help-text {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .help-cta {
+            background: white;
+            color: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        .help-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                height: auto;
+                position: relative;
+                padding: 1.5rem;
+            }
+            
+            .main-content {
+                padding: 1.5rem;
+            }
+            
+            .community-grid, .events-grid, .spotlight-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .user-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .community-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .tab {
+                padding: 0.75rem 1rem;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">ICP</div>
+                <span>Hub BR</span>
+            </div>
+            
+            <h3 class="nav-title">Menu Principal</h3>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        Início
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-book"></i>
+                        Documentação
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-graduation-cap"></i>
+                        Tutoriais
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link active">
+                        <i class="fas fa-users"></i>
+                        Comunidade
+                    </a>
+                </li>
+            </ul>
+            
+            <h3 class="nav-title">Canais da Comunidade</h3>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fab fa-discord"></i>
+                        Discord
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fab fa-telegram"></i>
+                        Telegram
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-comments"></i>
+                        Fórum
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fab fa-twitter"></i>
+                        Twitter
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="community-stats">
+                <h3 class="nav-title">Estatísticas da Comunidade</h3>
+                <div class="stat-item">
+                    <span>Membros Ativos</span>
+                    <span class="stat-value">+5.000</span>
+                </div>
+                <div class="stat-item">
+                    <span>Projetos Publicados</span>
+                    <span class="stat-value">+320</span>
+                </div>
+                <div class="stat-item">
+                    <span>Eventos Realizados</span>
+                    <span class="stat-value">48</span>
+                </div>
+                <div class="stat-item">
+                    <span>Perguntas Respondidas</span>
+                    <span class="stat-value">+2.4k</span>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="header">
+                <div class="breadcrumb">
+                    <a href="#">Home</a> <i class="fas fa-chevron-right"></i>
+                    <a href="#">Comunidade</a> <i class="fas fa-chevron-right"></i>
+                    <span>Central da Comunidade</span>
+                </div>
+                
+                <div class="user-actions">
+                    <a href="#" class="btn btn-outline">
+                        <i class="fas fa-calendar-alt"></i>
+                        Meus Eventos
+                    </a>
+                    <a href="#" class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Novo Tópico
+                    </a>
+                </div>
+            </div>
+            
+            <h1 class="page-title">Comunidade ICP Hub BR</h1>
+            <p class="page-description">
+                Conecte-se com desenvolvedores brasileiros, compartilhe conhecimento, 
+                colabore em projetos e faça parte do ecossistema Internet Computer.
+            </p>
+            
+            <div class="community-tabs">
+                <div class="tab active">
+                    <span>Canais</span>
+                    <span class="tab-badge">5</span>
+                </div>
+                <div class="tab">
+                    <span>Eventos</span>
+                    <span class="tab-badge">8</span>
+                </div>
+                <div class="tab">
+                    <span>Projetos</span>
+                    <span class="tab-badge">24</span>
+                </div>
+                <div class="tab">
+                    <span>Fórum</span>
+                    <span class="tab-badge">56</span>
+                </div>
+                <div class="tab">
+                    <span>Membros</span>
+                    <span class="tab-badge">+5K</span>
+                </div>
+            </div>
+            
+            <div class="community-grid">
+                <div class="community-card">
+                    <div class="card-header">
+                        <img src="https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Discord" class="card-image">
+                        <div class="card-overlay">
+                            <div class="card-time">
+                                <i class="fas fa-users"></i> 3.2k online
+                            </div>
+                        </div>
+                        <div class="card-icon icon-discord">
+                            <i class="fab fa-discord"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Discord Oficial</h3>
+                        <p class="card-description">
+                            Participe da nossa comunidade no Discord, tire dúvidas, compartilhe projetos e conecte-se com outros desenvolvedores.
+                        </p>
+                        <div class="card-stats">
+                            <div class="stat">
+                                <i class="fas fa-comments"></i>
+                                12.5k mensagens
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-user"></i>
+                                5.2k membros
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <a href="#" class="card-link">
+                                <i class="fab fa-discord"></i>
+                                Entrar no Discord
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="community-card">
+                    <div class="card-header">
+                        <img src="https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Telegram" class="card-image">
+                        <div class="card-overlay">
+                            <div class="card-time">
+                                <i class="fas fa-users"></i> 1.8k online
+                            </div>
+                        </div>
+                        <div class="card-icon icon-telegram">
+                            <i class="fab fa-telegram"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Grupo no Telegram</h3>
+                        <p class="card-description">
+                            Conversas rápidas, anúncios e networking direto pelo Telegram. Perfect para discussões casuais e quick tips.
+                        </p>
+                        <div class="card-stats">
+                            <div class="stat">
+                                <i class="fas fa-comments"></i>
+                                8.7k mensagens
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-user"></i>
+                                2.4k membros
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <a href="#" class="card-link">
+                                <i class="fab fa-telegram"></i>
+                                Entrar no Telegram
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="community-card">
+                    <div class="card-header">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Fórum" class="card-image">
+                        <div class="card-overlay">
+                            <div class="card-time">
+                                <i class="fas fa-comment"></i> 56 tópicos
+                            </div>
+                        </div>
+                        <div class="card-icon icon-forum">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Fórum da Comunidade</h3>
+                        <p class="card-description">
+                            Discussões técnicas aprofundadas, tutoriais detalhados e resolução de problemas. Perfect para conteúdo permanente.
+                        </p>
+                        <div class="card-stats">
+                            <div class="stat">
+                                <i class="fas fa-comment"></i>
+                                56 tópicos
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-reply"></i>
+                                324 respostas
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <a href="#" class="card-link">
+                                <i class="fas fa-comments"></i>
+                                Acessar Fórum
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="events-section">
+                <div class="section-header">
+                    <h2 class="section-title">Próximos Eventos</h2>
+                    <a href="#" class="btn btn-outline">
+                        <i class="fas fa-calendar"></i>
+                        Ver Todos
+                    </a>
+                </div>
+                <div class="events-grid">
+                    <div class="event-card">
+                        <div class="event-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            15 Out • 19:00
+                        </div>
+                        <h3 class="event-title">Workshop: Seu Primeiro dApp na ICP</h3>
+                        <p class="event-description">
+                            Aprenda a criar e fazer deploy do seu primeiro aplicativo descentralizado na Internet Computer.
+                        </p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-users"></i> 124 inscritos</span>
+                            <span><i class="fas fa-video"></i> Online</span>
+                        </div>
+                    </div>
+                    
+                    <div class="event-card">
+                        <div class="event-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            22 Out • 10:00
+                        </div>
+                        <h3 class="event-title">Hackathon ICP Brasil 2023</h3>
+                        <p class="event-description">
+                            Competição de desenvolvimento com prêmios em cycles. Participe e mostre suas habilidades.
+                        </p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-users"></i> 78 inscritos</span>
+                            <span><i class="fas fa-map-marker-alt"></i> São Paulo</span>
+                        </div>
+                    </div>
+                    
+                    <div class="event-card">
+                        <div class="event-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            30 Out • 14:00
+                        </div>
+                        <h3 class="event-title">Q&A com Especialistas ICP</h3>
+                        <p class="event-description">
+                            Sessão de perguntas e respostas com desenvolvedores experientes da Internet Computer.
+                        </p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-users"></i> 95 inscritos</span>
+                            <span><i class="fas fa-video"></i> Online</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="spotlight-section">
+                <div class="section-header">
+                    <h2 class="section-title">Destaque da Comunidade</h2>
+                    <a href="#" class="btn btn-outline">
+                        <i class="fas fa-star"></i>
+                        Ver Todos
+                    </a>
+                </div>
+                <div class="spotlight-grid">
+                    <div class="member-card">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Membro" class="member-avatar">
+                        <h3 class="member-name">Carlos Silva</h3>
+                        <p class="member-role">Desenvolvedor Full-Stack</p>
+                        <div class="member-projects">
+                            <span class="project-badge">4 projetos</span>
+                            <span class="project-badge">12 contribuições</span>
+                        </div>
+                        <p class="member-description">
+                            Especialista em Motoko e desenvolvimento de dApps na ICP.
+                        </p>
+                        <div class="member-actions">
+                            <a href="#" class="member-link">
+                                <i class="fas fa-eye"></i>
+                                Ver Perfil
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="member-card">
+                        <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Membro" class="member-avatar">
+                        <h3 class="member-name">Ana Costa</h3>
+                        <p class="member-role">Arquiteta de Blockchain</p>
+                        <div class="member-projects">
+                            <span class="project-badge">7 projetos</span>
+                            <span class="project-badge">23 contribuições</span>
+                        </div>
+                        <p class="member-description">
+                            Contribuidora ativa da documentação e tutoriais da ICP.
+                        </p>
+                        <div class="member-actions">
+                            <a href="#" class="member-link">
+                                <i class="fas fa-eye"></i>
+                                Ver Perfil
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="member-card">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Membro" class="member-avatar">
+                        <h3 class="member-name">Ricardo Almeida</h3>
+                        <p class="member-role">Especialista em Rust</p>
+                        <div class="member-projects">
+                            <span class="project-badge">5 projetos</span>
+                            <span class="project-badge">18 contribuições</span>
+                        </div>
+                        <p class="member-description">
+                            Desenvolvedor focado em canisters com Rust CDK.
+                        </p>
+                        <div class="member-actions">
+                            <a href="#" class="member-link">
+                                <i class="fas fa-eye"></i>
+                                Ver Perfil
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="member-card">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Membro" class="member-avatar">
+                        <h3 class="member-name">Juliana Santos</h3>
+                        <p class="member-role">UI/UX Designer</p>
+                        <div class="member-projects">
+                            <span class="project-badge">3 projetos</span>
+                            <span class="project-badge">9 contribuições</span>
+                        </div>
+                        <p class="member-description">
+                            Especialista em interfaces para dApps e experiência do usuário.
+                        </p>
+                        <div class="member-actions">
+                            <a href="#" class="member-link">
+                                <i class="fas fa-eye"></i>
+                                Ver Perfil
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h2 class="help-title">Precisa de ajuda ou quer contribuir?</h2>
+                <p class="help-text">
+                    Nossa comunidade está sempre pronta para ajudar e receber novas contribuições
+                </p>
+                <a href="#" class="help-cta">
+                    <i class="fas fa-hands-helping"></i>
+                    Como Participar
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Simulação de troca de abas
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+            });
+        });
+        
+        // Simulação de contador de membros online
+        const onlineCounters = document.querySelectorAll('.card-time');
+        setInterval(() => {
+            onlineCounters.forEach(counter
+<script src="script.js"></script>
