@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="stylesheet" href="style.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentação ICP - ICP Hub BR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3B82F6;
+            --primary-dark: #2563EB;
+            --secondary: #8B5CF6;
+            --accent: #06B6D4;
+            --light: #F8FAFC;
+            --dark: #0F172A;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1E293B;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+            --border-radius: 12px;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: var(--shadow-lg);
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            background: var(--dark);
+            color: white;
+            padding: 2rem 1.5rem;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo-icon {
+            background: var(--primary);
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border-radius: var(--border-radius);
+            border: none;
+            background: var(--gray-800);
+            color: white;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-300);
+        }
+
+        .nav-title {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--gray-300);
+            margin: 1.5rem 0 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-list {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            color: var(--gray-300);
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: var(--gray-800);
+            color: white;
+        }
+
+        .nav-link i {
+            margin-right: 0.75rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .progress-section {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: var(--gray-800);
+            border-radius: var(--border-radius);
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--gray-700);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--success);
+            width: 35%;
+            border-radius: 3px;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 2rem 3rem;
+            overflow-y: auto;
+            max-height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray-600);
+            font-size: 0.875rem;
+        }
+
+        .breadcrumb a {
+            color: var(--gray-600);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            font-size: 0.875rem;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--gray-300);
+            color: var(--gray-700);
+            background: white;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .page-description {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+        }
+
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .docs-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--gray-200);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .docs-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .docs-card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .docs-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .icon-bg-1 {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary);
+        }
+
+        .icon-bg-2 {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--secondary);
+        }
+
+        .icon-bg-3 {
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--accent);
+        }
+
+        .docs-card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .docs-card-description {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .docs-card-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .docs-card-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .docs-card-list li i {
+            color: var(--success);
+            margin-right: 0.5rem;
+            font-size: 0.75rem;
+        }
+
+        .docs-card-cta {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .card-link:hover {
+            text-decoration: underline;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .status-badge.beginner {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .status-badge.intermediate {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+        }
+
+        .status-badge.advanced {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+        }
+
+        .resources-section {
+            background: var(--gray-100);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .resource-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .resource-item:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-2px);
+        }
+
+        .resource-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: white;
+            font-size: 1.25rem;
+        }
+
+        .icon-1 {
+            background: var(--primary);
+        }
+
+        .icon-2 {
+            background: var(--secondary);
+        }
+
+        .icon-3 {
+            background: var(--accent);
+        }
+
+        .resource-text {
+            flex-grow: 1;
+        }
+
+        .resource-title {
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .resource-desc {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+        }
+
+        .help-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: var(--border-radius);
+            color: white;
+        }
+
+        .help-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .help-text {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .help-cta {
+            background: white;
+            color: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        .help-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                height: auto;
+                position: relative;
+                padding: 1.5rem;
+            }
+            
+            .main-content {
+                padding: 1.5rem;
+            }
+            
+            .docs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .user-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">ICP</div>
+                <span>Hub BR</span>
+            </div>
+            
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Buscar na documentação...">
+            </div>
+            
+            <h3 class="nav-title">Menu Principal</h3>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active">
+                        <i class="fas fa-home"></i>
+                        Início
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-book"></i>
+                        Documentação
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-graduation-cap"></i>
+                        Tutoriais
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-code"></i>
+                        Exemplos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        Comunidade
+                    </a>
+                </li>
+            </ul>
+            
+            <h3 class="nav-title">Categorias</h3>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-play-circle"></i>
+                        Primeiros Passos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-cogs"></i>
+                        Desenvolvimento
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-rocket"></i>
+                        Deploy e Mainnet
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-shield-alt"></i>
+                        Segurança
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="progress-section">
+                <div class="progress-text">
+                    <span>Seu Progresso</span>
+                    <span>35%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="header">
+                <div class="breadcrumb">
+                    <a href="#">Home</a> <i class="fas fa-chevron-right"></i>
+                    <a href="#">Documentação</a> <i class="fas fa-chevron-right"></i>
+                    <span>Guia Completo</span>
+                </div>
+                
+                <div class="user-actions">
+                    <a href="#" class="btn btn-outline">
+                        <i class="fas fa-question-circle"></i>
+                        Ajuda
+                    </a>
+                    <a href="#" class="btn btn-primary">
+                        <i class="fas fa-bookmark"></i>
+                        Favoritos
+                    </a>
+                </div>
+            </div>
+            
+            <h1 class="page-title">Documentação ICP</h1>
+            <p class="page-description">
+                Guias completos e recursos oficiais para desenvolvimento na Internet Computer. 
+                Aprenda desde os conceitos básicos até tópicos avançados de forma prática.
+            </p>
+            
+            <div class="docs-grid">
+                <div class="docs-card">
+                    <div class="docs-card-header">
+                        <div class="docs-card-icon icon-bg-1">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div>
+                            <h3 class="docs-card-title">Primeiros Passos</h3>
+                            <span class="status-badge beginner">Iniciante</span>
+                        </div>
+                    </div>
+                    <p class="docs-card-description">
+                        Comece sua jornada no ICP com guias de instalação e configuração do ambiente de desenvolvimento.
+                    </p>
+                    <ul class="docs-card-list">
+                        <li><i class="fas fa-check-circle"></i> Instalação do DFX</li>
+                        <li><i class="fas fa-check-circle"></i> Configuração do ambiente</li>
+                        <li><i class="fas fa-check-circle"></i> Primeiro projeto</li>
+                        <li><i class="fas fa-check-circle"></i> Deploy local vs mainnet</li>
+                    </ul>
+                    <div class="docs-card-cta">
+                        <a href="#" class="card-link">
+                            Explorar guia
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <span>4 tópicos</span>
+                    </div>
+                </div>
+                
+                <div class="docs-card">
+                    <div class="docs-card-header">
+                        <div class="docs-card-icon icon-bg-2">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div>
+                            <h3 class="docs-card-title">Desenvolvimento</h3>
+                            <span class="status-badge intermediate">Intermediário</span>
+                        </div>
+                    </div>
+                    <p class="docs-card-description">
+                        Aprenda sobre as linguagens, arquitetura e conceitos fundamentais para desenvolvimento no ICP.
+                    </p>
+                    <ul class="docs-card-list">
+                        <li><i class="fas fa-check-circle"></i> Motoko vs Rust</li>
+                        <li><i class="fas fa-check-circle"></i> Arquitetura de Canisters</li>
+                        <li><i class="fas fa-check-circle"></i> Inter-canister calls</li>
+                        <li><i class="fas fa-check-circle"></i> Frontend integration</li>
+                    </ul>
+                    <div class="docs-card-cta">
+                        <a href="#" class="card-link">
+                            Explorar guia
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <span>6 tópicos</span>
+                    </div>
+                </div>
+                
+                <div class="docs-card">
+                    <div class="docs-card-header">
+                        <div class="docs-card-icon icon-bg-3">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div>
+                            <h3 class="docs-card-title">Deploy e Mainnet</h3>
+                            <span class="status-badge advanced">Avançado</span>
+                        </div>
+                    </div>
+                    <p class="docs-card-description">
+                        Publique seus projetos na mainnet, gerencie cycles e monitore o desempenho de suas aplicações.
+                    </p>
+                    <ul class="docs-card-list">
+                        <li><i class="fas fa-check-circle"></i> Cycles e gerenciamento</li>
+                        <li><i class="fas fa-check-circle"></i> Deploy para mainnet</li>
+                        <li><i class="fas fa-check-circle"></i> Custom domains</li>
+                        <li><i class="fas fa-check-circle"></i> Monitoramento e analytics</li>
+                    </ul>
+                    <div class="docs-card-cta">
+                        <a href="#" class="card-link">
+                            Explorar guia
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <span>5 tópicos</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="resources-section">
+                <h2 class="section-title">Recursos Adicionais</h2>
+                <div class="resources-grid">
+                    <div class="resource-item">
+                        <div class="resource-icon icon-1">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="resource-text">
+                            <div class="resource-title">Documentação Oficial</div>
+                            <div class="resource-desc">Arquitetura, SDK e APIs do ICP</div>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-item">
+                        <div class="resource-icon icon-2">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="resource-text">
+                            <div class="resource-title">Fórum da Comunidade</div>
+                            <div class="resource-desc">Converse com outros desenvolvedores</div>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-item">
+                        <div class="resource-icon icon-3">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="resource-text">
+                            <div class="resource-title">Exemplos no GitHub</div>
+                            <div class="resource-desc">Projetos prontos e exemplos de código</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h2 class="help-title">Precisa de ajuda?</h2>
+                <p class="help-text">
+                    A comunidade ICP está sempre pronta para ajudar desenvolvedores
+                </p>
+                <a href="#" class="help-cta">
+                    <i class="fas fa-question-circle"></i>
+                    Fazer uma pergunta no fórum
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Simulação de funcionalidade de busca
+        document.querySelector('.search-input').addEventListener('focus', function() {
+            this.placeholder = 'Digite termos como "canisters", "deploy", "Motoko"...';
+        });
+        
+        document.querySelector('.search-input').addEventListener('blur', function() {
+            this.placeholder = 'Buscar na documentação...';
+        });
+        
+        // Simulação de sistema de progresso
+        const progressFill = document.querySelector('.progress-fill');
+        let progress = 35;
+        
+        setInterval(() => {
+            progress = progress < 80 ? progress + 5 : 35;
+            progressFill.style.width = `${progress}%`;
+            document.querySelector('.progress-text span:last-child').textContent = `${progress}%`;
+        }, 3000);
+    </script>
+</body>
+</html>
+<script src="script.js"></script>
