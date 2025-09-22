@@ -2,10 +2,9 @@
 <html lang="pt-BR">
 <head>
     <link rel="stylesheet" href="style.css">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentação ICP - ICP Hub BR</title>
+    <title>Tutoriais - ICP Hub BR</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -85,28 +84,6 @@
             justify-content: center;
         }
 
-        .search-box {
-            position: relative;
-            margin-bottom: 2rem;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 0.75rem 1rem 0.75rem 2.5rem;
-            border-radius: var(--border-radius);
-            border: none;
-            background: var(--gray-800);
-            color: white;
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--gray-300);
-        }
-
         .nav-title {
             text-transform: uppercase;
             font-size: 0.75rem;
@@ -169,7 +146,7 @@
         .progress-fill {
             height: 100%;
             background: var(--success);
-            width: 35%;
+            width: 65%;
             border-radius: 3px;
         }
 
@@ -260,242 +237,227 @@
             max-width: 800px;
         }
 
-        .docs-grid {
+        .filter-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            background: var(--gray-100);
+            border: 1px solid var(--gray-200);
+            color: var(--gray-700);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .tutorials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
             margin-bottom: 3rem;
         }
 
-        .docs-card {
+        .tutorial-card {
             background: white;
             border-radius: var(--border-radius);
-            padding: 1.5rem;
+            overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
             border: 1px solid var(--gray-200);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
         }
 
-        .docs-card:hover {
+        .tutorial-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
         }
 
-        .docs-card-header {
+        .card-header {
+            position: relative;
+            height: 160px;
+            overflow: hidden;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 1rem;
+            color: white;
+        }
+
+        .card-level {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .level-beginner {
+            background: var(--success);
+        }
+
+        .level-intermediate {
+            background: var(--warning);
+        }
+
+        .level-advanced {
+            background: var(--error);
+        }
+
+        .card-time {
             display: flex;
             align-items: center;
-            margin-bottom: 1rem;
+            gap: 0.5rem;
+            font-size: 0.875rem;
         }
 
-        .docs-card-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            font-size: 1.5rem;
+        .card-body {
+            padding: 1.5rem;
         }
 
-        .icon-bg-1 {
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--primary);
-        }
-
-        .icon-bg-2 {
-            background: rgba(139, 92, 246, 0.1);
-            color: var(--secondary);
-        }
-
-        .icon-bg-3 {
-            background: rgba(6, 182, 212, 0.1);
-            color: var(--accent);
-        }
-
-        .docs-card-title {
+        .card-title {
             font-size: 1.25rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
 
-        .docs-card-description {
+        .card-description {
             color: var(--gray-600);
-            font-size: 0.875rem;
             margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .docs-card-list {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .docs-card-list li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.5rem;
             font-size: 0.875rem;
         }
 
-        .docs-card-list li i {
-            color: var(--success);
-            margin-right: 0.5rem;
-            font-size: 0.75rem;
-        }
-
-        .docs-card-cta {
-            margin-top: auto;
+        .card-stats {
             display: flex;
             justify-content: space-between;
+            border-top: 1px solid var(--gray-200);
+            padding-top: 1rem;
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+
+        .stat {
+            display: flex;
             align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
         }
 
         .card-link {
             color: var(--primary);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.875rem;
             display: flex;
             align-items: center;
-            gap: 0.25rem;
+            gap: 0.5rem;
         }
 
         .card-link:hover {
             text-decoration: underline;
         }
 
-        .status-badge {
-            padding: 0.25rem 0.5rem;
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        .status-badge.beginner {
-            background: rgba(16, 185, 129, 0.1);
+        .completed-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             color: var(--success);
+            font-weight: 500;
+            font-size: 0.875rem;
         }
 
-        .status-badge.intermediate {
-            background: rgba(245, 158, 11, 0.1);
-            color: var(--warning);
-        }
-
-        .status-badge.advanced {
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--error);
-        }
-
-        .resources-section {
+        .learning-path {
             background: var(--gray-100);
             border-radius: var(--border-radius);
             padding: 2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
-        .section-title {
+        .path-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .path-title {
             font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
         }
 
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        .path-steps {
+            display: flex;
+            flex-direction: column;
             gap: 1rem;
         }
 
-        .resource-item {
+        .path-step {
             display: flex;
             align-items: center;
+            gap: 1rem;
             padding: 1rem;
             background: white;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-sm);
-            transition: var(--transition);
         }
 
-        .resource-item:hover {
-            box-shadow: var(--shadow);
-            transform: translateY(-2px);
-        }
-
-        .resource-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
+        .step-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 1rem;
-            color: white;
-            font-size: 1.25rem;
+            font-weight: 600;
         }
 
-        .icon-1 {
-            background: var(--primary);
-        }
-
-        .icon-2 {
-            background: var(--secondary);
-        }
-
-        .icon-3 {
-            background: var(--accent);
-        }
-
-        .resource-text {
+        .step-content {
             flex-grow: 1;
         }
 
-        .resource-title {
+        .step-title {
             font-weight: 600;
-            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
         }
 
-        .resource-desc {
-            font-size: 0.75rem;
+        .step-description {
+            font-size: 0.875rem;
             color: var(--gray-600);
         }
 
-        .help-section {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            border-radius: var(--border-radius);
-            color: white;
-        }
-
-        .help-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .help-text {
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .help-cta {
-            background: white;
+        .step-action {
             color: var(--primary);
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--border-radius);
-            font-weight: 600;
             text-decoration: none;
-            display: inline-block;
-            transition: var(--transition);
-        }
-
-        .help-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            font-weight: 500;
+            font-size: 0.875rem;
         }
 
         /* Responsividade */
@@ -514,7 +476,7 @@
                 padding: 1.5rem;
             }
             
-            .docs-grid {
+            .tutorials-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -535,8 +497,14 @@
                 font-size: 2rem;
             }
             
-            .resources-grid {
-                grid-template-columns: 1fr;
+            .filter-bar {
+                flex-direction: column;
+            }
+            
+            .path-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
             }
         }
     </style>
@@ -550,30 +518,21 @@
                 <span>Hub BR</span>
             </div>
             
-            <div class="search-box">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" class="search-input" placeholder="Buscar na documentação...">
-            </div>
-            
             <h3 class="nav-title">Menu Principal</h3>
             <ul class="nav-list">
                 <li class="nav-item">
-                    <a href="#" class="nav-link active">
+                    <a href="HomeRegionalAtualizado.html" class="nav-link">
                         <i class="fas fa-home"></i>
                         Início
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="DocumentaçãoRegionalAtualizado.html" class="nav-link">
                         <i class="fas fa-book"></i>
                         Documentação
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-graduation-cap"></i>
-                        Tutoriais
-                    </a>
+
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -582,7 +541,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="ComunidadeRegionalAtualizado.html" class="nav-link">
                         <i class="fas fa-users"></i>
                         Comunidade
                     </a>
@@ -620,10 +579,13 @@
             <div class="progress-section">
                 <div class="progress-text">
                     <span>Seu Progresso</span>
-                    <span>35%</span>
+                    <span>65%</span>
                 </div>
                 <div class="progress-bar">
                     <div class="progress-fill"></div>
+                </div>
+                <div style="font-size: 0.75rem; margin-top: 0.5rem; color: var(--gray-300);">
+                    8 de 12 tutoriais completos
                 </div>
             </div>
         </aside>
@@ -633,181 +595,315 @@
             <div class="header">
                 <div class="breadcrumb">
                     <a href="#">Home</a> <i class="fas fa-chevron-right"></i>
-                    <a href="#">Documentação</a> <i class="fas fa-chevron-right"></i>
-                    <span>Guia Completo</span>
+                    <a href="#">Tutoriais</a> <i class="fas fa-chevron-right"></i>
+                    <span>Todos os Tutoriais</span>
                 </div>
                 
                 <div class="user-actions">
                     <a href="#" class="btn btn-outline">
-                        <i class="fas fa-question-circle"></i>
-                        Ajuda
+                        <i class="fas fa-history"></i>
+                        Meu Progresso
                     </a>
                     <a href="#" class="btn btn-primary">
-                        <i class="fas fa-bookmark"></i>
-                        Favoritos
+                        <i class="fas fa-certificate"></i>
+                        Certificados
                     </a>
                 </div>
             </div>
             
-            <h1 class="page-title">Documentação ICP</h1>
+            <h1 class="page-title">Tutoriais ICP</h1>
             <p class="page-description">
-                Guias completos e recursos oficiais para desenvolvimento na Internet Computer. 
-                Aprenda desde os conceitos básicos até tópicos avançados de forma prática.
+                Aprenda a desenvolver na Internet Computer com tutoriais práticos em português. 
+                Do básico ao avançado, guias passo a passo para dominar o ecossistema ICP.
             </p>
             
-            <div class="docs-grid">
-                <div class="docs-card">
-                    <div class="docs-card-header">
-                        <div class="docs-card-icon icon-bg-1">
-                            <i class="fas fa-play-circle"></i>
-                        </div>
-                        <div>
-                            <h3 class="docs-card-title">Primeiros Passos</h3>
-                            <span class="status-badge beginner">Iniciante</span>
-                        </div>
-                    </div>
-                    <p class="docs-card-description">
-                        Comece sua jornada no ICP com guias de instalação e configuração do ambiente de desenvolvimento.
-                    </p>
-                    <ul class="docs-card-list">
-                        <li><i class="fas fa-check-circle"></i> Instalação do DFX</li>
-                        <li><i class="fas fa-check-circle"></i> Configuração do ambiente</li>
-                        <li><i class="fas fa-check-circle"></i> Primeiro projeto</li>
-                        <li><i class="fas fa-check-circle"></i> Deploy local vs mainnet</li>
-                    </ul>
-                    <div class="docs-card-cta">
-                        <a href="#" class="card-link">
-                            Explorar guia
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <span>4 tópicos</span>
-                    </div>
+            <div class="filter-bar">
+                <button class="filter-btn active">Todos</button>
+                <button class="filter-btn">Iniciante</button>
+                <button class="filter-btn">Intermediário</button>
+                <button class="filter-btn">Avançado</button>
+                <button class="filter-btn">Motoko</button>
+                <button class="filter-btn">Rust</button>
+                <button class="filter-btn">Frontend</button>
+            </div>
+            
+            <div class="learning-path">
+                <div class="path-header">
+                    <h2 class="path-title">Trilha de Aprendizagem Recomendada</h2>
+                    <a href="#" class="btn btn-outline">
+                        <i class="fas fa-list"></i>
+                        Ver trilha completa
+                    </a>
                 </div>
-                
-                <div class="docs-card">
-                    <div class="docs-card-header">
-                        <div class="docs-card-icon icon-bg-2">
-                            <i class="fas fa-cogs"></i>
+                <div class="path-steps">
+                    <div class="path-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-title">Instalação do DFX e Configuração</div>
+                            <div class="step-description">Configure seu ambiente de desenvolvimento</div>
                         </div>
-                        <div>
-                            <h3 class="docs-card-title">Desenvolvimento</h3>
-                            <span class="status-badge intermediate">Intermediário</span>
-                        </div>
+                        <a href="#" class="step-action">Continuar</a>
                     </div>
-                    <p class="docs-card-description">
-                        Aprenda sobre as linguagens, arquitetura e conceitos fundamentais para desenvolvimento no ICP.
-                    </p>
-                    <ul class="docs-card-list">
-                        <li><i class="fas fa-check-circle"></i> Motoko vs Rust</li>
-                        <li><i class="fas fa-check-circle"></i> Arquitetura de Canisters</li>
-                        <li><i class="fas fa-check-circle"></i> Inter-canister calls</li>
-                        <li><i class="fas fa-check-circle"></i> Frontend integration</li>
-                    </ul>
-                    <div class="docs-card-cta">
-                        <a href="#" class="card-link">
-                            Explorar guia
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <span>6 tópicos</span>
-                    </div>
-                </div>
-                
-                <div class="docs-card">
-                    <div class="docs-card-header">
-                        <div class="docs-card-icon icon-bg-3">
-                            <i class="fas fa-rocket"></i>
+                    <div class="path-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-title">Seu Primeiro Canister em Motoko</div>
+                            <div class="step-description">Crie um canister simples e faça deploy</div>
                         </div>
-                        <div>
-                            <h3 class="docs-card-title">Deploy e Mainnet</h3>
-                            <span class="status-badge advanced">Avançado</span>
-                        </div>
+                        <a href="#" class="step-action">Iniciar</a>
                     </div>
-                    <p class="docs-card-description">
-                        Publique seus projetos na mainnet, gerencie cycles e monitore o desempenho de suas aplicações.
-                    </p>
-                    <ul class="docs-card-list">
-                        <li><i class="fas fa-check-circle"></i> Cycles e gerenciamento</li>
-                        <li><i class="fas fa-check-circle"></i> Deploy para mainnet</li>
-                        <li><i class="fas fa-check-circle"></i> Custom domains</li>
-                        <li><i class="fas fa-check-circle"></i> Monitoramento e analytics</li>
-                    </ul>
-                    <div class="docs-card-cta">
-                        <a href="#" class="card-link">
-                            Explorar guia
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <span>5 tópicos</span>
+                    <div class="path-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-title">Interação entre Canisters</div>
+                            <div class="step-description">Aprenda a fazer chamadas entre canisters</div>
+                        </div>
+                        <a href="#" class="step-action">Iniciar</a>
                     </div>
                 </div>
             </div>
             
-            <div class="resources-section">
-                <h2 class="section-title">Recursos Adicionais</h2>
-                <div class="resources-grid">
-                    <div class="resource-item">
-                        <div class="resource-icon icon-1">
-                            <i class="fas fa-book"></i>
+            <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem;">Todos os Tutoriais</h2>
+            
+            <div class="tutorials-grid">
+                <div class="tutorial-card">
+                    <div class="card-header">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Instalação do DFX" class="card-image">
+                        <div class="card-overlay">
+                            <div class="card-time">
+                                <i class="far fa-clock"></i> 15 min
+                            </div>
                         </div>
-                        <div class="resource-text">
-                            <div class="resource-title">Documentação Oficial</div>
-                            <div class="resource-desc">Arquitetura, SDK e APIs do ICP</div>
-                        </div>
+                        <span class="card-level level-beginner">Iniciante</span>
                     </div>
-                    
-                    <div class="resource-item">
-                        <div class="resource-icon icon-2">
-                            <i class="fas fa-comments"></i>
+                    <div class="card-body">
+                        <h3 class="card-title">Instalação do DFX e Configuração do Ambiente</h3>
+                        <p class="card-description">
+                            Aprenda a instalar e configurar a DFX, a ferramenta principal para desenvolvimento na Internet Computer.
+                        </p>
+                        <div class="card-stats">
+                            <div class="stat">
+                                <i class="far fa-check-circle"></i>
+                                8 passos
+                            </div>
+                            <div class="stat">
+                                <i class="far fa-user"></i>
+                                92% concluíram
+                            </div>
                         </div>
-                        <div class="resource-text">
-                            <div class="resource-title">Fórum da Comunidade</div>
-                            <div class="resource-desc">Converse com outros desenvolvedores</div>
-                        </div>
-                    </div>
-                    
-                    <div class="resource-item">
-                        <div class="resource-icon icon-3">
-                            <i class="fab fa-github"></i>
-                        </div>
-                        <div class="resource-text">
-                            <div class="resource-title">Exemplos no GitHub</div>
-                            <div class="resource-desc">Projetos prontos e exemplos de código</div>
+                        <div class="card-actions">
+                            <a href="#" class="card-link">
+                                <i class="fas fa-play"></i>
+                                Começar Tutorial
+                            </a>
+                            <div class="completed-badge">
+                                <i class="fas fa-check-circle"></i>
+                                Concluído
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="help-section">
-                <h2 class="help-title">Precisa de ajuda?</h2>
-                <p class="help-text">
-                    A comunidade ICP está sempre pronta para ajudar desenvolvedores
-                </p>
-                <a href="#" class="help-cta">
-                    <i class="fas fa-question-circle"></i>
-                    Fazer uma pergunta no fórum
-                </a>
+                
+                <div class="tutorial-card">
+                    <div class="card-header">
+                        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Primeiro Canister" class="card-image">
+                        <div class="card-overlay">
+                            <div class="card-time">
+                                <i class="far fa-clock"></i> 25 min
+                            </div>
+                        </div>
+                        <span class="card-level level-beginner">Iniciante</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Criando seu Primeiro Canister com Motoko</h3>
+                        <p class="card-description">
+                            Tutorial prático para criar seu primeiro canister na ICP usando a linguagem Motoko.
+                        </p>
+                        <div class="card-stats">
+                            <div class="stat">
+                                <i class="far fa-check-circle"></i>
+                                12 passos
+                            </div>
+                            <div class="stat">
+                                <i class="far fa-user"></i>
+                                87% concluíram
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <a href="#" class="card-link">
+                                <i class="fas fa-play"></i>
+                                Começar Tutorial
+                            </a>
+                            <div class="completed-badge">
+                                <i class="fas fa-check-circle"></i>
+                                Concluído
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tutorial-card">
+                    <div class="card-header">
+                        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Deploy Mainnet" class="card-image">
+                        <div class="card-overlay">
+                            <div class="card-time">
+                                <i class="far fa-clock"></i> 35 min
+                            </div>
+                        </div>
+                        <span class="card-level level-intermediate">Intermediário</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Deploy na Mainnet e Gerenciamento de Cycles</h3>
+                        <p class="card-description">
+                            Aprenda a fazer deploy de sua aplicação na mainnet e gerencie cycles eficientemente.
+                        </p>
+                        <div class="card-stats">
+                            <div class="stat">
+                                <i class="far fa-check-circle"></i>
+                                15 passos
+                            </div>
+                            <div class="stat">
+                                <i class="far fa-user"></i>
+                                74% concluíram
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <a href="#" class="card-link">
+                                <i class="fas fa-play"></i>
+                                Começar Tutorial
+                            </a>
+                            <span class="card-link">67% completo</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tutorial-card">
+                    <div class="card-header">
+                        <img src="https://images.unsplash.com/photo-1546054454-aa26e2b734c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Frontend Integration" class="card-image">
+                        <div class="card-overlay">
+                            <div class="card-time">
+                                <i class="far fa-clock"></i> 45 min
+                            </div>
+                        </div>
+                        <span class="card-level level-intermediate">Intermediário</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Integração de Frontend com Canisters</h3>
+                        <p class="card-description">
+                            Conecte aplicações frontend (React, Vue) com canisters na Internet Computer.
+                        </p>
+                        <div class="card-stats">
+                            <div class="stat">
+                                <i class="far fa-check-circle"></i>
+                                18 passos
+                            </div>
+                            <div class="stat">
+                                <i class="far fa-user"></i>
+                                68% concluíram
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <a href="#" class="card-link">
+                                <i class="fas fa-play"></i>
+                                Começar Tutorial
+                            </a>
+                            <span class="card-link">Em andamento</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tutorial-card">
+                    <div class="card-header">
+                        <img src="https://images.unsplash.com/photo-1463194537334-3940784aa69a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Rust CDK" class="card-image">
+                        <div class="card-overlay">
+                            <div class="card-time">
+                                <i class="far fa-clock"></i> 50 min
+                            </div>
+                        </div>
+                        <span class="card-level level-advanced">Avançado</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Desenvolvimento com Rust CDK</h3>
+                        <p class="card-description">
+                            Tutorial avançado de desenvolvimento na ICP usando Rust e o Canister Development Kit.
+                        </p>
+                        <div class="card-stats">
+                            <div class="stat">
+                                <i class="far fa-check-circle"></i>
+                                22 passos
+                            </div>
+                            <div class="stat">
+                                <i class="far fa-user"></i>
+                                53% concluíram
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <a href="#" class="card-link">
+                                <i class="fas fa-play"></i>
+                                Começar Tutorial
+                            </a>
+                            <span class="card-link">Não iniciado</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tutorial-card">
+                    <div class="card-header">
+                        <img src="https://images.unsplash.com/photo-1563207153-f403bf289096?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Tokenização" class="card-image">
+                        <div class="card-overlay">
+                            <div class="card-time">
+                                <i class="far fa-clock"></i> 60 min
+                            </div>
+                        </div>
+                        <span class="card-level level-advanced">Avançado</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Criando Tokens e NFTs na ICP</h3>
+                        <p class="card-description">
+                            Desenvolva tokens fungíveis e não-fungíveis (NFTs) na Internet Computer.
+                        </p>
+                        <div class="card-stats">
+                            <div class="stat">
+                                <i class="far fa-check-circle"></i>
+                                20 passos
+                            </div>
+                            <div class="stat">
+                                <i class="far fa-user"></i>
+                                45% concluíram
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <a href="#" class="card-link">
+                                <i class="fas fa-play"></i>
+                                Começar Tutorial
+                            </a>
+                            <span class="card-link">Não iniciado</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
 
     <script>
-        // Simulação de funcionalidade de busca
-        document.querySelector('.search-input').addEventListener('focus', function() {
-            this.placeholder = 'Digite termos como "canisters", "deploy", "Motoko"...';
-        });
-        
-        document.querySelector('.search-input').addEventListener('blur', function() {
-            this.placeholder = 'Buscar na documentação...';
-        });
-        
         // Simulação de sistema de progresso
         const progressFill = document.querySelector('.progress-fill');
-        let progress = 35;
+        let progress = 65;
         
         setInterval(() => {
-            progress = progress < 80 ? progress + 5 : 35;
+            progress = progress < 90 ? progress + 5 : 65;
             progressFill.style.width = `${progress}%`;
             document.querySelector('.progress-text span:last-child').textContent = `${progress}%`;
-        }, 3000);
+        }, 5000);
+        
+        // Filtros interativos
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
     </script>
 </body>
 </html>
